@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title>sitio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="http://tales.stolfi.org/xrx.jpg">
+    <script>
+        var cliko = 0;
+        var quant = 0;
+        var poes = function () {
+            var img = document.createElement('img');
+            img.src = 'ham.jpg';
+            quant = quant + 1;
+            img.style.position = "absolute";
+            var x = Math.floor((Math.random() * window.innerHeight) + 0);
+            var w = Math.floor((Math.random() * 13));
+            var h = Math.floor((Math.random() * 13));
+            var mix = Math.floor((Math.random() * 14));
+            var y = Math.floor((Math.random() * window.innerWidth) + 0);
+            var c = Math.floor((Math.random() * 2));
+            var ble = ["multiply", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light",
+                "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"
+            ];
+            var es = ["900px", "600px", "1000px", "800px", "1200px", "700px", "300px", "30px", "650px", "2300px",
+                "530px", "80px", "450px"
+            ]
+            img.style.top = (x - 200) + "px";
+            img.style.height = es[h];
+            img.style.width = es[w];
+            img.style.left = (y - 200) + "px";
+            img.style.zIndex = "-100";
+            img.id = quant + "di";
+            img.style.mixBlendMode = ble[mix];
+            // add the newly created element and its content into the DOM 
+            var currentDiv = document.getElementById("div1");
+            document.body.insertBefore(img, currentDiv);
+            if (quant > 60) {
+                removeElement((quant - 60) + "di");
+            }
+        };
+
+        function funca() {
+            if (cliko == 0) {
+                clearInterval(oii);
+                cliko = 1;
+            } else {
+                oii = setInterval(poes, 50);
+                cliko = 0;
+            }
+        }
+
+        function removeElement(elementId) {
+            // Removes an element from the document
+            var element = document.getElementById(elementId);
+            element.parentNode.removeChild(element);
+        }
+        var oii = setInterval(poes, 50);
+    </script>
+    <style>
+        @font-face {
+            font-family: "Roboto black";
+            src: url(Roboto-Black.ttf);
+        }
+
+        body {
+            font-family: "Roboto black", Roboto, Liberation Sans;
+            overflow: hidden;
+        }
+
+        .sinal {
+            font-size: 8vmin;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 100vh;
+            margin: 0px;
+            padding: 0px;
+            mix-blend-mode: initial;
+            z-index: 100;
+        }
+
+        .link {
+            cursor: default;
+        }
+
+        .link:hover {
+            cursor: default;
+            color: #ffffff;
+        }
+
+        .nova {
+            line-height: 0.70em;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="sinal">
+        <span class="link" onclick="funca()">Make it stop!!!</span>
+    </h1>
+    <div id="div1"></div>
+
+</body>
+
+</html>

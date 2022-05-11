@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>sitio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="http://tales.stolfi.org/xrx.jpg">
+    <script>
+        var poes = function () {
+            // create a new div element 
+            var newDiv = document.createElement("div");
+            // and give it some content 
+            var i = 0;
+            var j = 0
+            while (j < 3) {
+                j = j + 1;
+                while (i < 3) {
+                    i = i + 1;
+                    if (((Math.random() * 2) + 0) < 1) {
+                        newDiv.appendChild(document.createTextNode("~"));
+                    } else {
+                        newDiv.appendChild(document.createTextNode("X"));
+                    }
+                }
+                i = 0;
+                newDiv.appendChild(document.createElement("br"));
+            }
+
+            newDiv.style.position = "absolute";
+            var x = Math.floor((Math.random() * window.innerHeight) + 0);
+            var s = Math.floor((Math.random() * 13));
+            var y = Math.floor((Math.random() * window.innerWidth) + 0);
+            var c = Math.floor((Math.random() * 2));
+            //var colors = ["#FF0000", "#FF7F00", "#FFFF00"," #00FF00","#0000FF","#8B00FF"];
+            var colors = ["#FFFFFF", "#000000"]
+            var es = ["10px", "10px", "10px", "10px", "20px", "35px", "45px", "11px", "10px", "31px", "180px",
+                "60px", "28px"
+            ]
+            newDiv.style.top = (x - 30) + "px";
+            newDiv.style.fontSize = es[s];
+            newDiv.style.left = (y - 30) + "px";
+            newDiv.style.color = colors[c];
+            newDiv.className = 'nova';
+            newDiv.style.zIndex = "-100";
+            // add the newly created element and its content into the DOM 
+            var currentDiv = document.getElementById("div1");
+            document.body.insertBefore(newDiv, currentDiv);
+
+        };
+        var i = setInterval(poes, 15);
+    </script>
+    <style>
+        @font-face {
+            font-family: "Roboto black";
+            src: url(Roboto-Black.ttf);
+        }
+
+        body {
+            font-family: "Roboto black", Roboto, Liberation Sans;
+            overflow: hidden;
+        }
+
+        .sinal {
+            font-size: 25vmin;
+            margin: 0vmin 1vmin 2vmin 3vmin;
+            mix-blend-mode: initial;
+            z-index: 100;
+        }
+
+        .link {
+            cursor: default;
+        }
+
+        .link:hover {
+            cursor: default;
+            color: #ffffff;
+        }
+
+        .nova {
+            line-height: 0.70em;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="sinal">
+        <span class="link" onclick="window.location = 'sintaxe.html'">sintaxe</span>
+    </h1>
+    <h1 class="sinal">
+        <span class="link">sintomas</span>
+    </h1>
+    <h1 class="sinal">
+        <span class="link">sintese</span>
+    </h1>
+    <div id="div1"></div>
+</body>
+
+</html>
