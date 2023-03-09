@@ -1,99 +1,215 @@
 <html>
 
 <head>
-    <title>sitio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="http://tales.stolfi.org/xrx.jpg">
-    <script>
-        var poes = function () {
-            // create a new div element 
-            var newDiv = document.createElement("div");
-            // and give it some content 
-            var i = 0;
-            var j = 0
-            while (j < 3) {
-                j = j + 1;
-                while (i < 3) {
-                    i = i + 1;
-                    if (((Math.random() * 2) + 0) < 1) {
-                        newDiv.appendChild(document.createTextNode("~"));
-                    } else {
-                        newDiv.appendChild(document.createTextNode("X"));
-                    }
-                }
-                i = 0;
-                newDiv.appendChild(document.createElement("br"));
-            }
-
-            newDiv.style.position = "absolute";
-            var x = Math.floor((Math.random() * window.innerHeight) + 0);
-            var s = Math.floor((Math.random() * 13));
-            var y = Math.floor((Math.random() * window.innerWidth) + 0);
-            var c = Math.floor((Math.random() * 2));
-            //var colors = ["#FF0000", "#FF7F00", "#FFFF00"," #00FF00","#0000FF","#8B00FF"];
-            var colors = ["#FFFFFF", "#000000"]
-            var es = ["10px", "10px", "10px", "10px", "20px", "35px", "45px", "11px", "10px", "31px", "180px",
-                "60px", "28px"
-            ]
-            newDiv.style.top = (x - 30) + "px";
-            newDiv.style.fontSize = es[s];
-            newDiv.style.left = (y - 30) + "px";
-            newDiv.style.color = colors[c];
-            newDiv.className = 'nova';
-            newDiv.style.zIndex = "-100";
-            // add the newly created element and its content into the DOM 
-            var currentDiv = document.getElementById("div1");
-            document.body.insertBefore(newDiv, currentDiv);
-
-        };
-        var i = setInterval(poes, 15);
-    </script>
-    <style>
-        @font-face {
-            font-family: "Roboto black";
-            src: url(Roboto-Black.ttf);
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>sitio</title>
+  <meta name="viewport" content="width=device-width,height=device-height initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <meta property="og:image" content="http://tales.stolfi.org/xrx.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+  <script>
+    var quant = 0;
+    var timerinterval = 60;
+    var maxthings=70;
+    var poes = function () {
+      quant = quant + 1;
+      // create a new div element 
+      var newDiv = document.createElement("div");
+      // and give it some content 
+      var i = 0;
+      var j = 0
+      while (j < 3) {
+        j = j + 1;
+        while (i < 3) {
+          i = i + 1;
+          if (((Math.random() * 2) + 0) < 1) {
+            newDiv.appendChild(document.createTextNode("~"));
+          } else {
+            newDiv.appendChild(document.createTextNode("X"));
+          }
         }
+        i = 0;
+        newDiv.appendChild(document.createElement("br"));
+      }
 
-        body {
-            font-family: "Roboto black", Roboto, Liberation Sans;
-            overflow: hidden;
-        }
+      newDiv.style.position = "absolute";
+      var x = Math.floor((Math.random() * window.innerHeight) + 0);
+      var s = Math.floor((Math.random() * 13));
+      var y = Math.floor((Math.random() * window.innerWidth) + 0);
+      var c = Math.floor((Math.random() * 2));
+      //var colors = ["#FF0000", "#FF7F00", "#FFFF00"," #00FF00","#0000FF","#8B00FF"];
+      var colors = ["#FFFFFF", "#000000"]
+      var es = ["100px", "190px", "150px", "700px", "600px", "65px", "450px", "11px", "330px", "310px", "180px", "70px", "28px"]
+      newDiv.style.top = (x - 60) + "px";
+      newDiv.style.fontSize = es[s];
+      newDiv.style.left = (y - 60) + "px";
+      newDiv.style.color = colors[c];
+      newDiv.className = 'nova';
+      newDiv.id = quant + "di";
+      newDiv.style.zIndex = "-100";
+      // add the newly created element and its content into the DOM 
+      var currentDiv = document.getElementById("background");
+      currentDiv.appendChild(newDiv);
+      if (quant > maxthings) {
+        removeElement((quant - maxthings) + "di");
+      }
+    }
+    function removeElement(elementId) {
+      // Removes an element from the document
+      var element = document.getElementById(elementId);
+      element.parentNode.removeChild(element);
+    }
+    var i = setInterval(poes, timerinterval);
+  </script>
+  <style>
+    body {
+      font-family: "Inter", Roboto, Liberation Sans;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      height: 100vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      margin: 0px;
+      background: black;
+    }
+    #background{
+      position:absolute;
+      top:0px;
+      left:0px;
+      width:100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -100;
+    }
+    .card{
+      margin:2em;
+      width: 31.25em;
+      background-color: white;
+      display:flex;
+      padding: 2em 2.4em 2em 2em;
+      border-radius: 0.2em;
+      -webkit-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.19);
+      -moz-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.19);
+      box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.19);
+    }
+    .text{
+      margin-left: 1.9em;
+      font-size: 1em;
+      font-weight: 400;
+      display: flex;
+      padding-top: 0.1em;
+      text-shadow: 0.3px 0.3px #00000080;
+      flex-flow: column;
+    }
+    .button-black{
+      border-radius: 0.1em;
+      padding: 0em 0.8em;
+      background-color: black;
+      text-shadow: 0.1px 0.1px #fff;
+      margin-right: auto;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9em;
+      text-align: center;
+      line-height: 2em;
+      margin-top: 0.8em;
+      transition: 0.6s;
+      cursor: context-menu; 
+    }
 
-        .sinal {
-            font-size: 25vmin;
-            margin: 0vmin 1vmin 2vmin 3vmin;
-            mix-blend-mode: initial;
-            z-index: 100;
-        }
+    .button-black:hover{
+      text-shadow: 10px 10px #000000,-8px 3px #000000,-8px -4px #000000;
+      color: #000000;
+      background-color: #fff;
+      cursor: pointer; 
+    }
 
-        .link {
-            cursor: default;
-        }
+    .photo-round {
+      width: 12.5em;
+      max-width: 12.5em;
+      border-radius: 0.2em;
+    }
 
-        .link:hover {
-            cursor: default;
-            color: #ffffff;
-        }
+    .photo-round:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
 
-        .nova {
-            line-height: 0.70em;
-            z-index: 0;
-        }
-    </style>
+    .sinal {
+      font-size: 25vmin;
+      margin: 0vmin 1vmin 2vmin 3vmin;
+      mix-blend-mode: initial;
+      font-weight: 800;
+      z-index: 100;
+    }
+
+    .link {
+      cursor: default;
+    }
+
+    .link:hover {
+      cursor: default;
+      color: #ffffff;
+    }
+
+    .nova {
+      line-height: 0.70em;
+      font-weight: 800;
+      z-index: 0;
+      overflow: hidden;
+    }
+    @media (max-width: 40em)
+    {
+      #background{
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:100vw;
+        height: max(100%,37.1875em);
+        overflow: hidden;
+      }
+      .card{
+        flex-direction: column;
+        width: 12.6em;
+        padding: 2em;
+      }
+      .text{
+        margin-left: 0px;
+        margin-top:2em;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <h1 class="sinal">
-        <span class="link" onclick="window.location = 'sintaxe.html'">sintaxe</span>
-    </h1>
-    <h1 class="sinal">
-        <span class="link">sintomas</span>
-    </h1>
-    <h1 class="sinal">
-        <span class="link">sintese</span>
-    </h1>
+<!--   <h1 class="sinal">
+    <span class="link" onclick="window.location = 'sintaxe.html'">sintaxe</span>
+  </h1>
+  <h1 class="sinal">
+    <span class="link">sintomas</span>
+  </h1>
+  <h1 class="sinal">
+    <span class="link">sintese</span>
+  </h1> -->
+  <div id="corpo">
+    <div class='card'>
+      <img class='photo-round' src="profile.jpg">
+      <div class='text'>
+        <div>Me chamo <b>Tales Stolfi Barboza</b>, sou desenvolvedor web, estudante da graduação no Bacharelado Interdisciplinar em Humanidades e minha paixão é experimentar nas fronteiras da Arte-tecnologia.</div>
+        <a class="button-black" onclick="window.location = 'sintaxe.html'">ver mais</a>
+      </div>
+    </div>
+  </div>
+  <div id="background">
     <div id="div1"></div>
+  </div>
+
+
+
+
 </body>
 
 </html>
